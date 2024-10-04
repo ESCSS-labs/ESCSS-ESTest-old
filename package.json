@@ -1,0 +1,10 @@
+{
+  "name": "estest-old",
+  "version": "0.0.0",
+  "author": {
+    "name": "Mike Lee"
+  },
+  "main": "./ESTest.js",
+  "license": "AGPL-3.0-only",
+  "type": "module"
+}
