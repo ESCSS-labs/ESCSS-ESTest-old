@@ -1,4 +1,4 @@
-const name = 'estest-old'
+const name = 'escss-estest-old'
 let testResult = null // for internal testing
 const OPERATORS = ["<", "<=", ">=", ">", "===", "!=="]
 const TYPES = [
@@ -15,7 +15,7 @@ const TYPES = [
   "function",
 ]
 
-const fixLegacyType = (input) => {
+function fixLegacyType(input) {
   const isNull = input === null;
   const isArray = Array.isArray(input);
   const isNaN = Number.isNaN(input);
@@ -37,7 +37,7 @@ const fixLegacyType = (input) => {
   );
 }
 
-const fixTextInLog = (input) => {
+function fixTextInLog(input) {
   const fix_ArrayInLog = () => {
     // fix nesting array
     // '[1, 'hello', [2, 3]]'  -->  '[1, 'hello', [...]]'
@@ -91,7 +91,7 @@ const fixTextInLog = (input) => {
   }
 }
 
-const useTypeMode = (input, mode, msg = "undefined error message") => {
+function useTypeMode(input, mode, msg = "undefined error message") {
   {
     if (!TYPES.includes(mode)) {
       throw new Error(
@@ -155,7 +155,7 @@ const useTypeMode = (input, mode, msg = "undefined error message") => {
   testResult = mode;
 }
 
-const useOperatorMode = (input, mode, input2, msg = "undefined error message") => {
+function useOperatorMode(input, mode, input2, msg = "undefined error message") {
   {
     if (!OPERATORS.includes(mode)) {
       throw new Error(
@@ -253,11 +253,11 @@ const useOperatorMode = (input, mode, input2, msg = "undefined error message") =
   testResult = true;
 }
 
-const _getTestResult = () => {
+function _getTestResult() {
   return testResult;
 }
 
-const ESTest = (input, mode, msgOrInput2, msg) => {
+function ESTest(input, mode, msgOrInput2, msg) {
   if (TYPES.includes(mode)) {
     useTypeMode(input, mode, msgOrInput2); // msg here
   } else if (OPERATORS.includes(mode)) {
